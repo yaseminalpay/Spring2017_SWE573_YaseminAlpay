@@ -1,7 +1,8 @@
 package com.funtweet;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class QueryControllerTest {
 		when(queryRepoMock.findOne(1L)).thenReturn(query);
 		
 		query = queryControllerMock.get(1L);
-		assertEquals(1L, query.getId().longValue());
+		assertThat(query.getId(), is(1L));
 	}
 
 }

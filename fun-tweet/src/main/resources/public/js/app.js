@@ -44,24 +44,28 @@
 				data: {
 					pageTitle: 'Home'
 				}
-			})
-			.state('shipwrecks',{
-	        url:'/shipwrecks',
-	        templateUrl: viewsPrefix + 'shipwrecks.html',
-	        controller:'ShipwreckListController'
-	    }).state('viewShipwreck',{
-	       url:'/shipwrecks/:id/view',
-	       templateUrl: viewsPrefix + 'shipwreck-view.html',
-	       controller:'ShipwreckViewController'
-	    }).state('newShipwreck',{
-	        url:'/shipwrecks/new',
-	        templateUrl: viewsPrefix + 'shipwreck-add.html',
-	        controller:'ShipwreckCreateController'
-	    }).state('editShipwreck',{
-	        url:'/shipwrecks/:id/edit',
-	        templateUrl: viewsPrefix + 'shipwreck-edit.html',
-	        controller:'ShipwreckEditController'
-	    })
+			}).state('queries',{
+            url:'/queries',
+            templateUrl: viewsPrefix + 'queries.html',
+            controller:'QueryListController',
+            data: {
+                pageTitle: 'Saved Queries'
+            }
+        }).state('newQuery',{
+            url:'/queries/new',
+            templateUrl: viewsPrefix + 'query-add.html',
+            controller:'QueryCreateController'
+        }).state('viewQuery',{
+            url:'/queries/:id/view',
+            templateUrl: viewsPrefix + 'query-view.html',
+            controller:'QueryViewController'
+        }).state('tweets', {
+            url: "/tweets",
+            templateUrl: viewsPrefix + "tweets.html",
+            data: {
+                pageTitle: 'Saved Tweets'
+            }
+        })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',
 		function($rootScope, $timeout) {

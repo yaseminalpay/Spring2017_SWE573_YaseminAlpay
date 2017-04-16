@@ -1,6 +1,13 @@
-.classpath
-.project
+.git
 .metadata
 .recommenders
+
+.settings/
+target/
+.classpath
+.factorypath
+.project
+
 Servers/
 target/
+RemoteSystemsTempFiles/

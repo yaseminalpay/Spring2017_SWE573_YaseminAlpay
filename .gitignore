@@ -1,11 +1,12 @@
 .git
 .metadata
 .recommenders
+.idea/
 
 .settings/
 target/
 .classpath
-.factorypath
+fun-tweet/.factorypath
 .project
 
 Servers/

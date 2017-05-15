@@ -14,6 +14,8 @@ angular.module('app.services', []).factory('Shipwreck', function($resource) {
             method: 'PUT'
         }
     });
+}).factory('SavedTweet', function($resource) {
+    return $resource('/api/v1/search');
 }).service('popupService',function($window){
     this.showPopup=function(message){
         return $window.confirm(message);

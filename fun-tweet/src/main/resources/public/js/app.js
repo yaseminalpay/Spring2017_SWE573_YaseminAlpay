@@ -59,12 +59,24 @@
             url:'/queries/:id/view',
             templateUrl: viewsPrefix + 'query-view.html',
             controller:'QueryViewController'
+        }).state('editQuery',{
+            url:'/queries/:id/edit',
+            templateUrl: viewsPrefix + 'query-edit.html',
+            controller:'QueryEditController'
+        }).state('deleteQuery',{
+            url:'/queries/:id/delete',
+            templateUrl: viewsPrefix + 'queries.html',
+            controller:'QueryDeleteController'
         }).state('tweets', {
             url: "/tweets",
             templateUrl: viewsPrefix + "tweets.html",
             data: {
                 pageTitle: 'Saved Tweets'
             }
+        }).state('searchByKeyword',{
+            url:'/search',
+            templateUrl: viewsPrefix + 'home.html',
+            controller:'SearchKeywordController'
         })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',

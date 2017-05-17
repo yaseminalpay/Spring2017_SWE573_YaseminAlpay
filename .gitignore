@@ -1,6 +1,15 @@
-.classpath
-.project
+.git
 .metadata
 .recommenders
+.idea/
+twitter.properties
+
+.settings/
+target/
+.classpath
+fun-tweet/.factorypath
+.project
+
 Servers/
 target/
+RemoteSystemsTempFiles/

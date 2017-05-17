@@ -38,13 +38,13 @@
 
 		$stateProvider
 			// you can set this to no template if you just want to use the html in the page
-			.state('home', {
+		.state('home', {
 				url: "/",
 				templateUrl: viewsPrefix + "home.html",
 				data: {
 					pageTitle: 'Home'
-				}
-			}).state('queries',{
+				}			
+		}).state('queries',{
             url:'/queries',
             templateUrl: viewsPrefix + 'queries.html',
             controller:'QueryListController',
@@ -59,12 +59,28 @@
             url:'/queries/:id/view',
             templateUrl: viewsPrefix + 'query-view.html',
             controller:'QueryViewController'
+        }).state('editQuery',{
+            url:'/queries/:id/edit',
+            templateUrl: viewsPrefix + 'query-edit.html',
+            controller:'QueryEditController'
+        }).state('deleteQuery',{
+            url:'/queries/:id/delete',
+            templateUrl: viewsPrefix + 'queries.html',
+            controller:'QueryDeleteController'
         }).state('tweets', {
             url: "/tweets",
             templateUrl: viewsPrefix + "tweets.html",
             data: {
                 pageTitle: 'Saved Tweets'
             }
+        }).state('searchByKeyword',{
+            url:'/search',
+            templateUrl: viewsPrefix + 'home.html',
+            controller:'SearchKeywordController'
+        }).state('search', {
+        	url:'/search',
+            templateUrl: viewsPrefix + 'home.html',
+            controller:'TweetSearchController'
         })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',

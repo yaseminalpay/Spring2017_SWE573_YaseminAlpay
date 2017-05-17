@@ -3,7 +3,6 @@ package com.funtweet.util;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
 import java.util.Properties;
 
 import twitter4j.conf.Configuration;
@@ -14,41 +13,33 @@ public class TwitterConfigurationBuilder {
 	public static Configuration build() throws IOException {
 		
 		ConfigurationBuilder builder = new ConfigurationBuilder();
+		InputStream inputStream = null;
 		
-		builder.setDebugEnabled(true).setOAuthConsumerKey("")
-				.setOAuthConsumerSecret("")
-				.setOAuthAccessToken("")
-				.setOAuthAccessTokenSecret("");
-		return builder.build();
-	}
-
-	private TwitterConfiguration readConfig() throws IOException  {
-
-		TwitterConfiguration configuration = new TwitterConfiguration();
 		try {
-			Properties prop = new Properties();
-			String propFileName = "twitter.properties";
+			Properties properties = new Properties();
+			String propertiesFileName = "/twitter.properties";
 
-			InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+			inputStream = TwitterConfigurationBuilder.class.getResourceAsStream(propertiesFileName);
 
 			if (inputStream != null) {
-				prop.load(inputStream);
-			} else {
-				throw new FileNotFoundException("Property file '" + propFileName + "' not found in the classpath");
+				properties.load(inputStream);
+			} 
+			else {
+				throw new FileNotFoundException("Property file '" + propertiesFileName + "' not found in the resources.");
 			}
 
-			configuration.setOAuthConsumerKey(prop.getProperty("OAuthConsumerKey"));
-			configuration.setOAuthConsumerSecret(prop.getProperty("OAuthConsumerSecret"));
-			configuration.setOAuthAccessToken(prop.getProperty("OAuthAccessToken"));
-			configuration.setOAuthAccessTokenSecret(prop.getProperty("OAuthAccessTokenSecret"));
+			builder.setDebugEnabled(true)
+			.setOAuthConsumerKey(properties.getProperty("OAuthConsumerKey"))
+			.setOAuthConsumerSecret(properties.getProperty("OAuthConsumerSecret"))
+			.setOAuthAccessToken(properties.getProperty("OAuthAccessToken"))
+			.setOAuthAccessTokenSecret(properties.getProperty("OAuthAccessTokenSecret"));
 			
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
 		} finally {
-//			inputStream.close();
+			inputStream.close();
 		}
 		
-		return configuration;
+		return builder.build();
 	}
-
 }

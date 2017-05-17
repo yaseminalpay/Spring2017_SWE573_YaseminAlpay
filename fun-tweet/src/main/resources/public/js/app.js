@@ -73,13 +73,9 @@
             data: {
                 pageTitle: 'Saved Tweets'
             }
-        }).state('searchByKeyword',{
-            url:'/search',
-            templateUrl: viewsPrefix + 'home.html',
-            controller:'SearchKeywordController'
         }).state('search', {
-        	url:'/search',
-            templateUrl: viewsPrefix + 'home.html',
+        	url:'/search/:queryString',
+        	templateUrl: viewsPrefix + 'home.html',
             controller:'TweetSearchController'
         })
 	})

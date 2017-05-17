@@ -39,12 +39,11 @@ angular.module('app.controllers', [])
 			$scope.query = Query.splice({
 				id : $stateParams.id
 			});
-		})		
-.controller('SearchKeywordController',
-		function($scope, $state, $stateParams, Tweet) {
-			$scope.savedTweets = Tweet.query(); 
 		})
 .controller('TweetSearchController',
-		function($scope, $state, popupService, $window, SearchedTweet) {
-			$scope.tweets = SearchedTweet.query(); 
-		});
+		function($scope, $stateParams, SearchedTweet) {
+		$scope.savedTweets = SearchedTweet.query({
+			queryString : $stateParams.queryString
+	});
+});
+

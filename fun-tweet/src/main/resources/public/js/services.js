@@ -1,4 +1,5 @@
-angular.module('app.services', []).factory('Shipwreck', function($resource) {
+angular.module('app.services', [])
+.factory('Shipwreck', function($resource) {
   return $resource('/api/v1/shipwrecks/:id', { id: '@id' }, {
     update: {
       method: 'PUT'
@@ -8,13 +9,22 @@ angular.module('app.services', []).factory('Shipwreck', function($resource) {
     this.showPopup=function(message){
         return $window.confirm(message);
     }
-}).factory('Query', function($resource) {
+})
+.factory('Query', function($resource) {
     return $resource('/api/v1/queries/:id', { id: '@id' }, {
         update: {
             method: 'PUT'
         }
     });
-}).factory('SavedTweet', function($resource) {
+})
+.factory('Tweet', function($resource) {
+    return $resource('/api/v1/search');
+}).service('popupService',function($window){
+    this.showPopup=function(message){
+        return $window.confirm(message);
+    }
+})
+.factory('SearchedTweet', function($resource) {
     return $resource('/api/v1/search');
 }).service('popupService',function($window){
     this.showPopup=function(message){

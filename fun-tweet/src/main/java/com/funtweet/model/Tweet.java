@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class SavedTweet {
+public class Tweet {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,11 +21,11 @@ public class SavedTweet {
 	Double latitude;
 	Double longitude;
 	
-	public SavedTweet() {
+	public Tweet() {
 		
 	}
 	
-	public SavedTweet(Long id, Long userId, String tweetOwner, String content, String keyword, String hashtag,
+	public Tweet(Long id, Long userId, String tweetOwner, String content, String keyword, String hashtag,
 			String resultType, String language, Double latitude, Double longitude) {
 		super();
 		this.id = id;

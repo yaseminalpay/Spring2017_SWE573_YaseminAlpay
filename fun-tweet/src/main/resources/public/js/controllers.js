@@ -1,4 +1,5 @@
-angular.module('app.controllers', []).controller('QueryListController',
+angular.module('app.controllers', [])
+.controller('QueryListController',
 		function($scope, $state, popupService, $window, Query) {
 			$scope.queries = Query.query(); // fetch all saved queries. Issues a
 											// GET to /api/v1/queries
@@ -10,7 +11,8 @@ angular.module('app.controllers', []).controller('QueryListController',
 					});
 				}
 			};
-		}).controller('QueryCreateController',
+		})
+.controller('QueryCreateController',
 		function($scope, $state, $stateParams, Query) {
 			$scope.query = new Query();
 
@@ -19,26 +21,30 @@ angular.module('app.controllers', []).controller('QueryListController',
 					$state.go('queries');
 				});
 			};
-		}).controller('QueryViewController',
+		})
+.controller('QueryViewController',
 		function($scope, $stateParams, Query) {
 			$scope.query = Query.get({
 				id : $stateParams.id
 			});
-		}).controller('QueryEditController',
+		})
+.controller('QueryEditController',
 		function($scope, $stateParams, Query) {
 			$scope.query = Query.update({
 				id : $stateParams.id
 			});
-		}).controller('QueryDeleteController',
+		})
+.controller('QueryDeleteController',
 		function($scope, $stateParams, Query) {
 			$scope.query = Query.splice({
 				id : $stateParams.id
 			});
-		}).controller('TweetListController',
-		function($scope, $state, popupService, $window, Tweet) {
-			$scope.tweets = Tweet.query(); // fetch all saved queries. Issues a
-											// GET to /api/v1/tweets;
-		}).controller('SearchKeywordController',
-		function($scope, $state, $stateParams, SavedTweet) {
-			$scope.savedTweets = SavedTweet.query(); 
+		})		
+.controller('SearchKeywordController',
+		function($scope, $state, $stateParams, Tweet) {
+			$scope.savedTweets = Tweet.query(); 
+		})
+.controller('TweetSearchController',
+		function($scope, $state, popupService, $window, SearchedTweet) {
+			$scope.tweets = SearchedTweet.query(); 
 		});

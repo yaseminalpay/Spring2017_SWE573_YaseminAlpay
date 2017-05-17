@@ -12,13 +12,13 @@
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="input-group">
-            	<input class="form-control" input type="text" ng-model="savedtweet.keyword" aria-label="Search keyword" id="keyword" placeholder="Keyword">
-                <a class="btn btn-primary" ui-sref="searchByKeyword()">Edit</a>
+            	<input class="form-control" input type="text" ng-model="tweet.keyword" aria-label="Search keyword" id="keyword" placeholder="Keyword">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default" aria-label="Advanced Search" data-toggle="collapse" data-target="#advancedSearchCollapse" aria-expanded="false" aria-controls="advancedSearchCollapse">
                         <span class="glyphicon glyphicon-asterisk"></span>
                     </button>
-                    <button type="button" class="btn btn-default" ng-click="searchByKeyword(keyword)">Search</button>
+                    <button type="button" class="btn btn-default" ui-sref="searchByKeyword()">Search</button>
+                    <button type="button" class="btn btn-default" ui-sref="search()">NewSearch</button>
                 </div>
             </div>
         </div>
@@ -36,13 +36,11 @@
 
 
 	<table class="table funtweettable">
-		<tr>
-			<td><h3>Results</h3></td>
-			<td></td>
 		</tr>
 		<tr ng-repeat="tweet in savedTweets">
 			<td>{{tweet.content}}</td>
 			<td>{{tweet.keyword}}</td>
+			<td><a class="btn btn-primary" ui-sref="viewQuery({id:query.id})">Save</a></td>
 			<td><a class="btn btn-primary" ui-sref="viewQuery({id:query.id})">View</a></td>
 		</tr>
 	</table>

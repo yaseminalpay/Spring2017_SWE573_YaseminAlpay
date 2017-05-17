@@ -1,4 +1,4 @@
-package com.funtweet.util;
+package com.funtweet.config;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

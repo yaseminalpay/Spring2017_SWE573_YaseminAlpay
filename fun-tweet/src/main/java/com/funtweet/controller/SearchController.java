@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.funtweet.config.TwitterConfigurationBuilder;
 import com.funtweet.model.Tweet;
 import com.funtweet.util.Lang;
-import com.funtweet.util.TwitterConfigurationBuilder;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;

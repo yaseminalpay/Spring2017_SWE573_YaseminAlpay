@@ -20,6 +20,14 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
+
+/**
+ * Searches tweets using twitter4j. Searches by query string.
+ * Example query string:
+ * keyword=Ortakoy&hashtag=kumpir&result_type=mixed&latitude=45&longitude=54
+ * @author Yasemin Alpay
+ *
+ */
 @RestController
 @RequestMapping("api/v1/search")
 public class SearchController {

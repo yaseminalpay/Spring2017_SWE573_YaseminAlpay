@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,38 +26,13 @@ public class SearchController {
 
 	public static int DEFAULT_RESULT_COUNT = 100;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Tweet> listByKeyword() throws TwitterException, IOException {
+	@RequestMapping(value = "/{queryString}", method = RequestMethod.GET)
+	public List<Tweet> search(@PathVariable String queryString) throws TwitterException, IOException {
 
-		String keyword = "Ortaköy";
 		TwitterFactory twitterFactory = new TwitterFactory(TwitterConfigurationBuilder.build());
 		Twitter twitter = twitterFactory.getInstance();
 
-		Query query = new Query(keyword).lang(Lang.ENGLISH);
-		query.setCount(DEFAULT_RESULT_COUNT);
-
-		QueryResult searchResult = twitter.search(query);
-		List<Status> statusList = searchResult.getTweets();
-		List<Tweet> tweetList = new ArrayList<Tweet>();
-
-		for (Status status : statusList) {
-			Tweet tweet = new Tweet();
-			tweet.setContent(status.getText());
-			tweetList.add(tweet);
-		}
-
-		return tweetList;
-
-	}
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Tweet> search() throws TwitterException, IOException {
-
-		String keyword = "Ortaköy";
-		TwitterFactory twitterFactory = new TwitterFactory(TwitterConfigurationBuilder.build());
-		Twitter twitter = twitterFactory.getInstance();
-
-		Query query = new Query(keyword).lang(Lang.ENGLISH);
+		Query query = new Query(queryString).lang(Lang.ENGLISH);
 		query.setCount(DEFAULT_RESULT_COUNT);
 
 		QueryResult searchResult = twitter.search(query);

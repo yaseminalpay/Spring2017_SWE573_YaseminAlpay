@@ -17,15 +17,8 @@ angular.module('app.services', [])
         }
     });
 })
-.factory('Tweet', function($resource) {
-    return $resource('/api/v1/search');
-}).service('popupService',function($window){
-    this.showPopup=function(message){
-        return $window.confirm(message);
-    }
-})
 .factory('SearchedTweet', function($resource) {
-    return $resource('/api/v1/search');
+    return $resource('/api/v1/search/:queryString', { queryString: '@queryString' });
 }).service('popupService',function($window){
     this.showPopup=function(message){
         return $window.confirm(message);

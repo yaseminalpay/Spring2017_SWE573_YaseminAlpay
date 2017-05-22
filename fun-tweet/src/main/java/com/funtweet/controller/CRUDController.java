@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.wordnik.swagger.annotations.ApiOperation;
+
 /**
  * Defines the CRUD operations.
  * @author Yasemin Alpay
@@ -26,6 +28,7 @@ public abstract class CRUDController <T> {
 	 * @return Entity list
 	 */
 	@RequestMapping(method = RequestMethod.GET)
+	@ApiOperation(value= "list", notes = "Lists all items.")
 	public List<T> list()
 	{
 		return repository.findAll();
@@ -37,6 +40,7 @@ public abstract class CRUDController <T> {
 	 * @return entity object
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ApiOperation(value= "get", notes = "Get item by ID.")
 	public T get(@PathVariable Long id)
 	{
 		return repository.findOne(id);
@@ -48,6 +52,7 @@ public abstract class CRUDController <T> {
 	 * @return updated entity object
 	 */
 	@RequestMapping(method = RequestMethod.POST)
+	@ApiOperation(value= "create", notes = "Creates an item.")
 	public T create(@RequestBody T entity)
 	{
 		return repository.saveAndFlush(entity);
@@ -60,6 +65,7 @@ public abstract class CRUDController <T> {
 	 * @return created entity object
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@ApiOperation(value= "update", notes = "Updates an item.")
 	public T update(@PathVariable Long id, @RequestBody T entity)
 	{
 		T existingEntity = repository.findOne(id);
@@ -73,6 +79,7 @@ public abstract class CRUDController <T> {
 	 * @return deleted object
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value= "delete", notes = "Deletes item by ID.")
 	public T delete(@PathVariable Long id)
 	{
 		T existingEntity = repository.findOne(id);

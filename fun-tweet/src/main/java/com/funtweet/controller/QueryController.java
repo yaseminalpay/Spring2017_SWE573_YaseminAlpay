@@ -10,6 +10,7 @@ import com.funtweet.model.Query;
  * @author Yasemin Alpay
  *
  */
+
 @RestController
 @RequestMapping("api/v1/queries")
 public class QueryController extends CRUDController<Query>{

@@ -2,10 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.funtweet</groupId>
+	<groupId>com.funtweet</groupId>    
 	<artifactId>fun-tweet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
+
+	<name>fun-tweet</name>
+	<url>http://maven.apache.org</url>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -13,11 +16,10 @@
 		<version>1.5.2.RELEASE</version>
 	</parent>
 
-	<name>fun-tweet</name>
-	<url>http://maven.apache.org</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+    	<start-class>com.funtweet.App</start-class>
 	</properties>
 
 	<dependencies>
@@ -30,17 +32,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-		</dependency>
-
+		
+		 <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -52,7 +49,13 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.twitter4j</groupId>
 			<artifactId>twitter4j-core</artifactId>
@@ -60,19 +63,19 @@
 		</dependency>
 
 
-	<dependency>
-    <groupId>io.springfox</groupId>
-    <artifactId>springfox-swagger2</artifactId>
-    <version>2.0.1</version>
-	</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 
-	<dependency>
-		<groupId>io.springfox</groupId>
-		<artifactId>springfox-swagger-ui</artifactId>
-		<version>2.0.1</version>
-		<scope>compile</scope>
-	</dependency>
- 
-		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 	</dependencies>
 </project>

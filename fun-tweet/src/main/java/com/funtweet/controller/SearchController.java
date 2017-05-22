@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.funtweet.config.TwitterConfigurationBuilder;
 import com.funtweet.model.Tweet;
 import com.funtweet.util.Lang;
+import com.funtweet.util.SearchQueryParser;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -22,9 +24,7 @@ import twitter4j.TwitterFactory;
 
 
 /**
- * Searches tweets using twitter4j. Searches by query string.
- * Example query string:
- * keyword=Ortakoy&hashtag=kumpir&result_type=mixed&latitude=45&longitude=54
+ * Searches tweets.
  * @author Yasemin Alpay
  *
  */
@@ -34,13 +34,15 @@ public class SearchController {
 
 	public static int DEFAULT_RESULT_COUNT = 100;
 
+	@ApiOperation(value= "search", notes = "Searches tweets using twitter4j. Searches by query string. "
+			+ "Example query string: keyword=Ortakoy&hashtag=kumpir&result_type=mixed&latitude=45&longitude=54")
 	@RequestMapping(value = "/{queryString}", method = RequestMethod.GET)
 	public List<Tweet> search(@PathVariable String queryString) throws TwitterException, IOException {
 
 		TwitterFactory twitterFactory = new TwitterFactory(TwitterConfigurationBuilder.build());
 		Twitter twitter = twitterFactory.getInstance();
 
-		Query query = new Query(queryString).lang(Lang.ENGLISH);
+		Query query = SearchQueryParser.parse(queryString);
 		query.setCount(DEFAULT_RESULT_COUNT);
 
 		QueryResult searchResult = twitter.search(query);

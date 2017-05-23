@@ -46,4 +46,3 @@ angular.module('app.controllers', [])
 			queryString : $stateParams.queryString
 	});
 });
-

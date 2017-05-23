@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.funtweet.config.TwitterConfigurationBuilder;
 import com.funtweet.model.Tweet;
-import com.funtweet.util.Lang;
-import com.funtweet.util.SearchQueryParser;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 import twitter4j.Query;
@@ -42,7 +40,10 @@ public class SearchController {
 		TwitterFactory twitterFactory = new TwitterFactory(TwitterConfigurationBuilder.build());
 		Twitter twitter = twitterFactory.getInstance();
 
-		Query query = SearchQueryParser.parse(queryString);
+		Query query = new Query();
+		query.setQuery(queryString);
+		//FIXME fix for advanced search. get query string from frontend		
+		//SearchQueryParser.parse(queryString);
 		query.setCount(DEFAULT_RESULT_COUNT);
 
 		QueryResult searchResult = twitter.search(query);
